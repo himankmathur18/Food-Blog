@@ -1,44 +1,67 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import InputForm from "./InputForm";
 import { NavLink } from "react-router-dom";
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  let token = localStorage.getItem("token");
-  const [isLogin, setIsLogin] = useState(token ? false : true);
+  const token = localStorage.getItem("token");
+  const [isLogin, setIsLogin] = useState(!token);
+  const user = JSON.parse(localStorage.getItem("user") || "null");
 
-  useEffect(()=>{
-setIsLogin(token ? false : true)
-  },[token])
+  useEffect(() => {
+    setIsLogin(!localStorage.getItem("token"));
+  }, []);
 
   const checkLogin = () => {
-    if(token){
-      localStorage.removeItem("token")
-      localStorage.removeItem("user")
-      setIsLogin(true)
-    }
-    else{
-      setIsOpen(true)
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setIsLogin(true);
+    } else {
+      setIsOpen(true);
     }
   };
+
   return (
     <>
       <header>
         <h2>Food Blog</h2>
         <ul>
-          <a>
+          <li>
             <NavLink to="/">Home</NavLink>
-          </a>
-          <a onClick={()=>isLogin && setIsOpen(true)}>
-            <NavLink to={!isLogin ? "/Recipe": "/"}>Recipes</NavLink>
-          </a>
-          <a onClick={()=>isLogin && setIsOpen(true)}>
-            <NavLink to={!isLogin ? "/favRecipe" : "/"}>Favorite</NavLink>
-          </a>
-          <a onClick={checkLogin}>
-            <p className="login">{(isLogin)? "Login" : "Logout"}</p>
-          </a>
+          </li>
+          <li>
+            <NavLink
+              to={!isLogin ? "/Recipe" : "#"}
+              onClick={(e) => {
+                if (isLogin) {
+                  e.preventDefault();
+                  setIsOpen(true);
+                }
+              }}
+            >
+              Recipes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={!isLogin ? "/favRecipe" : "#"}
+              onClick={(e) => {
+                if (isLogin) {
+                  e.preventDefault();
+                  setIsOpen(true);
+                }
+              }}
+            >
+              Favorite
+            </NavLink>
+          </li>
+          <li>
+            <button onClick={checkLogin} className="login">
+              {isLogin ? "Login" : "Logout"} {user?.email ? user?.email :""}
+            </button>
+          </li>
         </ul>
       </header>
       {isOpen && (

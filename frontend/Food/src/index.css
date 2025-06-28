@@ -1,66 +1,85 @@
 /* Home page css */
+body{
+  padding: 0;
+  margin: 0;
+}
 .Home {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 73vh;
-  background: linear-gradient(120deg, #f8fafc 0%, #ffe5ec 100%);
-  border-radius: 30px;
-  margin-top: 5px;
-  gap: 60px;
+  min-height: 53vh;
+  background: linear-gradient(120deg, #fff 0%, #ffe5ec 100%);
+  border-radius: 32px;
+  margin: 12px 0 6px 0;
+  gap: 70px;
+  box-shadow: 0 6px 32px rgba(230, 57, 70, 0.07);
+  padding: 32px 0;
+ 
 }
 
 .left {
-  max-width: 400px;
+  max-width: 430px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .left h1 {
-  font-size: 2.8rem;
+  font-size: 3.1rem;
   color: #e63946;
-  margin-bottom: 10px;
-  font-family: 'Segoe UI', sans-serif;
-  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-family: "Segoe UI", sans-serif;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px #ffe5ec;
 }
 
 .left p {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 1.22rem;
+  color: #444;
+  margin-bottom: 18px;
+  line-height: 1.6;
 }
 
 .left button {
-  background: #e63946;
+  background: linear-gradient(90deg, #e63946 60%, #ffb6b9 100%);
   color: #fff;
   border: none;
-  padding: 14px 32px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  padding: 16px 38px;
+  border-radius: 32px;
+  font-size: 1.15rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(230, 57, 70, 0.15);
-  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 6px 24px rgba(230, 57, 70, 0.13);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
 }
 
 .left button:hover {
-  background: #ff6f61;
-  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(90deg, #ffb6b9 0%, #e63946 100%);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 10px 32px rgba(230, 57, 70, 0.18);
 }
 
 .right img {
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(44, 62, 80, 0.13);
   object-fit: cover;
-  width: 320px;
-  height: 300px;
+  width: 340px;
+  height: 320px;
+  border: 4px solid #fff;
+  transition: transform 0.2s;
+}
+
+.right img:hover {
+  transform: scale(1.03) rotate(-1deg);
 }
 
 @media (max-width: 900px) {
   .Home {
     flex-direction: column;
-    gap: 32px;
+    gap: 36px;
     padding: 24px 0;
   }
   .right img {
@@ -72,110 +91,131 @@
 
 /* Navbar css */
 header {
-  background: linear-gradient( #ffb6b9 0%, #ffe5ec 100%);
-  padding: 20px 40px;
+  background: linear-gradient(90deg, #ffb6b9 0%, #ffe5ec 100%);
+  padding: 22px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border-radius: 0 0 16px 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.09);
+  border-radius: 0 0 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 header h2 {
-  font-family: 'Segoe Script', cursive;
-  color: #fff;
-  font-size: 2rem;
-  letter-spacing: 2px;
+  font-family: "Segoe Script", cursive;
+  color: #e63946;
+  font-size: 2.2rem;
+  letter-spacing: 2.5px;
   margin: 0;
+  text-shadow: 0 2px 8px #ffe5ec;
 }
 
 header ul {
   list-style: none;
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 36px;
   margin: 0;
   padding: 0;
 }
 
 header a {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1.1rem;
-  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.13rem;
+  color: #e63946;
   cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
-  padding: 6px 14px;
-  border-radius: 8px;
+  transition: color 0.2s, background 0.2s, transform 0.2s;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-header a:hover {
-  color: #ffb347;
-  background: #fff;
-  transform: translateY(-2px) scale(1.05);
+header a:hover, header a.active {
+  color: #fff;
+  background: #e63946;
+  transform: translateY(-2px) scale(1.07);
+  box-shadow: 0 2px 8px rgba(230, 57, 70, 0.13);
 }
 
 .login {
   font-weight: bold;
   margin: 0;
   cursor: pointer;
+  background: #fff;
+  color: #e63946;
+  border: 2px solid #e63946;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.login:hover {
+  background: #e63946;
+  color: #fff;
+  border: 2px solid #fff;
 }
 
 /*footer css */
 .footer {
   background: linear-gradient(120deg, #222 60%, #444 100%);
   color: #fff;
-  padding: 32px 0 16px 0;
-  margin-top: 5px;
-  border-radius: 24px 24px 0 0;
-  box-shadow: 0 -2px 16px rgba(44, 62, 80, 0.10);
+  padding: 36px 0 18px 0;
+  margin-top: 10px;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -2px 18px rgba(44, 62, 80, 0.13);
 }
 
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
 }
 
 .footer-logo {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: #ffb347;
-  font-family: 'Segoe Script', cursive;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  font-family: "Segoe Script", cursive;
+  margin-bottom: 10px;
+  letter-spacing: 1.2px;
 }
 
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 8px;
+  gap: 22px;
+  margin-bottom: 10px;
 }
 
 .footer-nav a {
   color: #fff;
   text-decoration: none;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1.08rem;
-  padding: 6px 14px;
-  border-radius: 8px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.1rem;
+  padding: 8px 16px;
+  border-radius: 10px;
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .footer-nav a:hover {
   color: #ffb347;
   background: #fff;
-  transform: translateY(-2px) scale(1.05);
+  transform: translateY(-2px) scale(1.07);
 }
 
 .footer-copy {
-  font-size: 0.97rem;
+  font-size: 1rem;
   opacity: 0.7;
   text-align: center;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 @media (min-width: 600px) {
@@ -185,7 +225,9 @@ header a:hover {
     align-items: center;
     gap: 0;
   }
-  .footer-logo, .footer-nav, .footer-copy {
+  .footer-logo,
+  .footer-nav,
+  .footer-copy {
     margin-bottom: 0;
   }
 }
@@ -194,7 +236,7 @@ header a:hover {
   .footer-container {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
   }
   .footer-nav {
     justify-content: center;
@@ -207,84 +249,93 @@ header a:hover {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.2rem;
   justify-content: center;
-  padding: 2rem 1rem;
   background: #faf9f6;
 }
 
 /* Individual card styling */
 .card {
   background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
   overflow: hidden;
-  width: 260px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  width: 270px;
+  transition: transform 0.22s, box-shadow 0.22s;
   display: flex;
   flex-direction: column;
+  position: relative;
+  animation: fadeInCard 0.5s;
+}
+
+@keyframes fadeInCard {
+  0% { opacity: 0; transform: scale(0.95) translateY(30px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
 }
 
 /* Recipe image */
 .card-img {
   width: 100%;
-  height: 160px;
+  height: 170px;
   object-fit: cover;
   background: #eee;
+  border-bottom: 2px solid #ffe5ec;
 }
 
 /* Card body */
 .card-body {
-  padding: 1rem;
+  padding: 1.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 /* Title styling */
 .title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #2d2d2d;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #e63946;
   margin-bottom: 0.3rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  letter-spacing: 0.5px;
 }
 
 /* Time and heart icon row */
 .card-body .time {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   color: #ff9800;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .card-body svg {
   cursor: pointer;
   color: #e57373;
-  font-size: 1.2rem;
-  transition: color 0.2s;
+  font-size: 1.25rem;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .card-body svg:hover {
   color: #d32f2f;
+  transform: scale(1.2);
 }
 
 /* Responsive design */
 @media (max-width: 700px) {
   .card-container {
-    gap: 1rem;
-    padding: 1rem 0.5rem;
+    gap: 1.2rem;
+    padding: 1.2rem 0.5rem;
   }
   .card {
-    width: 90vw;
+    width: 92vw;
     max-width: 340px;
   }
 }
@@ -296,8 +347,8 @@ header a:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(30, 30, 30, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(30, 30, 30, 0.65);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,18 +357,18 @@ header a:hover {
 
 .modal {
   border: none;
-  border-radius: 16px;
-  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  padding: 2.2rem 2.7rem;
   background: #fff;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
   min-width: 320px;
-  max-width: 90vw;
-  animation: popIn 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+  max-width: 92vw;
+  animation: popIn 0.33s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 @keyframes popIn {
   0% {
-    transform: scale(0.8) translateY(40px);
+    transform: scale(0.85) translateY(40px);
     opacity: 0;
   }
   100% {
@@ -327,74 +378,89 @@ header a:hover {
 }
 
 .modal h1 {
-  margin: 0 0 1rem 0;
-  font-size: 2rem;
-  color: #333;
+  margin: 0 0 1.1rem 0;
+  font-size: 2.1rem;
+  color: #e63946;
   text-align: center;
 }
 
 /* InputForm css */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: linear-gradient(120deg, #fff 0%, #ffe5ec 100%);
+}
+
+/* Remove box/card feel from form */
 .form {
-  max-width: 350px;
-  margin: 60px auto;
-  padding: 32px 28px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(60, 60, 130, 0.15);
+  width: 100%;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 28px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
 }
 
 .form-control {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 12px;
+  width: 100%;
+}
+
+.input,
+.input-textarea {
+  padding: 16px 18px;
+  border: 1.7px solid #ffe5ec;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  background: #f8fafc;
+  color: #2d2d2d;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.input-textarea {
+  min-height: 130px;
+  resize: vertical;
 }
 
 label {
-  font-weight: 600;
-  color: #3a3a5a;
+  font-weight: 700;
+  color: #e63946;
   margin-bottom: 2px;
 }
 
-.input {
-  padding: 10px 14px;
-  border: 1.5px solid #e0e0f0;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #f8f9fd;
-  transition: border 0.2s;
-}
-
-.input:focus {
-  border: 1.5px solid #e57373;
-  outline: none;
-  background: #fff;
-}
-
 button[type="submit"] {
-  margin-top: 10px;
-  padding: 12px 0;
-  background: linear-gradient(90deg, #6c63ff 60%, #48c6ef 100%);
+  margin-top: 18px;
+  padding: 16px 0;
+  background: linear-gradient(90deg, #e63946 60%, #ffb6b9 100%);
   color: #fff;
-  font-weight: 700;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 14px;
+  font-size: 1.15rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(76, 99, 255, 0.08);
+  box-shadow: 0 2px 10px rgba(230, 57, 70, 0.13);
   transition: background 0.2s, transform 0.1s;
 }
 
 button[type="submit"]:hover {
-  background: linear-gradient(90deg, #48c6ef 0%, #6c63ff 100%);
-  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(90deg, #ffb6b9 0%, #e63946 100%);
+  transform: translateY(-2px) scale(1.04);
 }
 
 p {
   text-align: center;
-  color: #6c63ff;
+  color: #e63946;
   font-weight: 500;
   margin-top: 18px;
   cursor: pointer;
@@ -402,6 +468,17 @@ p {
 }
 
 p:hover {
-  color: #48c6ef;
+  color: #ffb347;
   text-decoration: underline;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 12px;
+  }
+
+  .form {
+    gap: 20px;
+  }
 }

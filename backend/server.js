@@ -9,11 +9,12 @@ connectDb();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public"))
 
 app.use("/", require("./Routes/user"));
-app.use("/", require('./Routes/recipe'));
+app.use("/recipe", require('./Routes/recipe'));
 
-app.listen(port, () => {
+app.listen(port, (err) => {
   console.log(`Server is running on http://localhost:${port}`);
 }); 
 

@@ -1,7 +1,20 @@
 // import React from "react";
+import { useState } from "react";
 import { Recipeitems } from "../component/Recipeitems";
+import { useNavigate } from "react-router-dom";
+import Modal from '../component/Modal'
+import InputForm from "../component/InputForm";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState();
+  const addRecipe = () => {
+    let token = localStorage.getItem("token");
+    if (token) navigate("/addRecipe");
+    else {
+      setIsOpen(true);
+    }
+  };
   return (
     <>
       <section className="Home">
@@ -17,7 +30,7 @@ export default function Home() {
             easy-to-make recipes using everyday ingredients that bring joy to
             your table.
           </p>
-          <button>Share your recite</button>
+          <button onClick={addRecipe}>Share your recipe</button>
         </div>
         <div className="right">
           <img
@@ -28,8 +41,13 @@ export default function Home() {
           />
         </div>
       </section>
+      {isOpen && (
+        <Modal onClose={() => setIsOpen(false)}>
+          <InputForm setIsOpen={() => setIsOpen(false)} />
+        </Modal>
+      )}
       <div className="recipe">
-        <Recipeitems/>
+        <Recipeitems />
       </div>
     </>
   );

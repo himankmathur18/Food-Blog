@@ -10,7 +10,9 @@ export const Recipeitems = () => {
         {allRecipes?.map((item, index) => (
           <div key={index} className="card">
             <img
-              src={item.image || "https://via.placeholder.com/120x100"}
+              src={`http://localhost:5000/images/${item.coverImage}`}
+              width="120px"
+              height="100px"
               alt={item.title}
               className="card-img"
             />
