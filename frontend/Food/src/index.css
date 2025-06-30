@@ -246,6 +246,7 @@ header a:hover, header a.active {
 }
 
 /* my recipe cards */
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -308,9 +309,12 @@ header a:hover, header a.active {
 }
 
 /* Time and heart icon row */
+.icon{
+  display:flex;
+}
 .card-body .time {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.5rem;
   color: #ff9800;
   font-size: 1.05rem;
@@ -328,7 +332,6 @@ header a:hover, header a.active {
   transform: scale(1.2);
 }
 
-/* Responsive design */
 @media (max-width: 700px) {
   .card-container {
     gap: 1.2rem;

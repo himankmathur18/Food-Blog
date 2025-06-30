@@ -3,6 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
+
 const imagePath = path.resolve(__dirname, "..", "public", "images");
 
 if (!fs.existsSync(imagePath)) {
@@ -21,13 +22,21 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const getAllRecipes = async (req, res) => {
-  const recipes = await Recipe.find();
-  return res.json(recipes);
+  try {
+    const recipes = await Recipe.find();
+    return res.json(recipes);
+  } catch (error) {
+    return res.state(500).json({message:"error"})
+  }
 };
 
 const getRecipeById = async (req, res) => {
-  const recipe = await Recipe.findById(req.params.id);
-  res.json(recipe);
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    res.json(recipe);   
+  } catch (error) {
+    return res.status(500).json({ message: "error" });
+  }
 };
 
 const addRecipe = async (req, res) => {
@@ -54,15 +63,16 @@ const addRecipe = async (req, res) => {
 };
 
 const editRecipe = async (req, res) => {
+  console.log(req.body)
   const { title, ingredients, instructions, time } = req.body;
-  let recipe = await Recipes.findById(req.params.id);
+  let recipe = await Recipe.findById(req.params.id);
 
   try {
     if (recipe) {
       let coverImage = req.file?.filename
         ? req.file?.filename
         : recipe.coverImage;
-      await Recipes.findByIdAndUpdate(
+      await Recipe.findByIdAndUpdate(
         req.params.id,
         { ...req.body, coverImage },
         { new: true }
@@ -75,15 +85,15 @@ const editRecipe = async (req, res) => {
 };
 const deleteRecipe = async (req, res) => {
   try {
-    await Recipes.deleteOne({ _id: req.params.id });
+    await Recipe.deleteOne({ _id: req.params.id });
     res.json({ status: "ok" });
-  } catch (err) {
+  } catch (error) {
     return res.status(400).json({ message: "error" });
   }
 };
 
 module.exports = {
-  getAllRecipes,
+  getAllRecipes ,
   getRecipeById,
   addRecipe,
   editRecipe,

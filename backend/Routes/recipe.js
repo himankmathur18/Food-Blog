@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", getAllRecipes);
 router.get("/:id", getRecipeById);
 router.post("/",upload.single('file'),verifyToken,addRecipe);
-router.put("/:id", editRecipe);
-router.delete("/:id", deleteRecipe);
+router.put("/:id", upload.single("file"), verifyToken, editRecipe);
+router.delete("/:id",verifyToken, deleteRecipe);
 
 module.exports = router;

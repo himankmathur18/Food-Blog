@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const token = localStorage.getItem("token");
-  const [isLogin, setIsLogin] = useState(!token);
+  const [isLogin, setIsLogin] = useState(token ? false :true);
   const user = JSON.parse(localStorage.getItem("user") || "null");
 
   useEffect(() => {
-    setIsLogin(!localStorage.getItem("token"));
-  }, []);
+   setIsLogin(token ? false : true)
+  }, [token]);
 
   const checkLogin = () => {
     if (localStorage.getItem("token")) {
@@ -33,7 +33,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              to={!isLogin ? "/Recipe" : "#"}
+              to={!isLogin ? "/myRecipe" : "/"}
               onClick={(e) => {
                 if (isLogin) {
                   e.preventDefault();
@@ -41,12 +41,12 @@ export default function Navbar() {
                 }
               }}
             >
-              Recipes
+              My Recipes
             </NavLink>
           </li>
           <li>
             <NavLink
-              to={!isLogin ? "/favRecipe" : "#"}
+              to={!isLogin ? "/favRecipe" : "/"}
               onClick={(e) => {
                 if (isLogin) {
                   e.preventDefault();
@@ -59,7 +59,7 @@ export default function Navbar() {
           </li>
           <li>
             <button onClick={checkLogin} className="login">
-              {isLogin ? "Login" : "Logout"} {user?.email ? user?.email :""}
+              {isLogin ? "Login" : "Logout"} {user?.email ? `(${user?.email})` :""}
             </button>
           </li>
         </ul>
